@@ -5,6 +5,11 @@ import { Usuario } from './usuario.entity';
 
 @Injectable()
 export class UsuariosService {
+  usuarios: any;
+  async findByEmail(email: string): Promise<Usuario | null> {
+    const usuario = this.usuarios.find((user) => user.email === email);
+    return usuario || null;
+  }
   constructor(
     @InjectRepository(Usuario)
     private usuariosRepository: Repository<Usuario>,

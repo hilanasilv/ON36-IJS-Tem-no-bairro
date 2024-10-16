@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { LocaisService } from './locais.service';
 import { Local } from './local.entity';
 
@@ -6,9 +7,10 @@ import { Local } from './local.entity';
 export class LocaisController {
   constructor(private readonly locaisService: LocaisService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() local: Local) {
-    return this.locaisService.create(local);
+  async create(@Body() createLocalDto: any) {
+    return this.locaisService.create(createLocalDto);
   }
 
   @Get()
