@@ -1,23 +1,32 @@
-import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Controller, Get, Post, Body, Param, Put, Delete, Query } from '@nestjs/common';
 import { LocaisService } from './locais.service';
 import { Local } from './local.entity';
+import { CreateLocalDto } from './create-local.dto';
 
 @Controller('locais')
 export class LocaisController {
   constructor(private readonly locaisService: LocaisService) {}
 
-  @UseGuards(JwtAuthGuard)
-  @Post()
-  async create(@Body() createLocalDto: any) {
+  @Post('cadastrar')
+  async create(@Body() createLocalDto: CreateLocalDto) {
     return this.locaisService.create(createLocalDto);
   }
 
-  @Get()
-  findAll() {
-    return this.locaisService.findAll();
+  @Get('buscar')
+  async buscarLocais(
+    @Query('bairro') bairro?: string,
+    @Query('categoria') categoriaId?: number,
+  ) {
+    if (bairro && categoriaId) {
+      return this.locaisService.buscarPorBairroECategoria(bairro, categoriaId);
+    } else if (bairro) {
+      return this.locaisService.buscarPorBairro(bairro);
+    } else if (categoriaId) {
+      return this.locaisService.buscarPorCategoria(categoriaId);
+    } else {
+      return [];
+    }
   }
-
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.locaisService.findOne(+id);
