@@ -5,10 +5,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Local } from './local.entity';
 import { Usuario } from '../usuarios/usuario.entity';
 import { Categoria } from '../categorias/categoria.entity';
-import { AuthModule } from '../auth/auth.module';
+import { UsuariosModule } from '../usuarios/usuarios.module';
+import { Bairro } from '../bairros/bairro.entity';
+import { BairrosModule } from 'src/bairros/bairros.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Local, Usuario, Categoria]),AuthModule],
+  imports: [TypeOrmModule.forFeature([Local, Usuario, Categoria, Bairro]),
+  BairrosModule,
+  UsuariosModule
+],
   providers: [LocaisService],
   controllers: [LocaisController],
 })
