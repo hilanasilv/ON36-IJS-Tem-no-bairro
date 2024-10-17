@@ -1,16 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Local } from '../locais/local.entity';
 
-@Entity()
+@Entity('usuarios')
 export class Usuario {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({type: 'varchar', length: 100})
+  @Column({ type: 'varchar', length: 100 })
   nome: string;
 
-  @Column({ type: 'varchar', length: 150, unique: true })
-  email: string;
-
-  @Column({ type: 'varchar', length: 255 })
-  senha: string;
+  @OneToMany(() => Local, (local) => local.usuario)
+  locais: Local[];
 }
