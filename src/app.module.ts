@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { LocaisModule } from './locais/locais.module';
-import { UsuariosModule } from './usuarios/usuarios.module';
-import {BairrosModule} from './bairros/bairros.module'
-import { CategoriasModule } from './categorias/categorias.module';
+import { LocaisModule } from './application/modules/locais.module';
+import { UsuariosModule } from './application/modules/usuarios.module';
+import {BairrosModule} from './application/modules/bairros.module'
+import { CategoriasModule } from './application/modules/categorias.module';
 import dataSource from './database/typeorm.config'; 
 
 @Module({
