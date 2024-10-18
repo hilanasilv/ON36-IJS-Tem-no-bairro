@@ -1,8 +1,8 @@
 import { DataSource } from 'typeorm';
-import { Local } from '../locais/local.entity';
-import { Usuario } from '../usuarios/usuario.entity';
-import { Categoria } from '../categorias/categoria.entity';
-import { Bairro } from '../bairros/bairro.entity';
+import { Local } from '../domains/entities/local.entity';
+import { Usuario } from '../domains/entities/usuario.entity';
+import { Categoria } from '../domains/entities/categoria.entity';
+import { Bairro } from '../domains/entities/bairro.entity';
 import * as dotenv from 'dotenv';
 
 dotenv.config(); 
