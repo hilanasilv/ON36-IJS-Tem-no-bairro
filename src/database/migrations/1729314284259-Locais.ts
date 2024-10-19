@@ -114,4 +114,3 @@ export class Locais1729314284259 implements MigrationInterface {
         await queryRunner.dropTable('locais');
     }
 }
-
