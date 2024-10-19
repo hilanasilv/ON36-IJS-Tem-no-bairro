@@ -16,7 +16,7 @@
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/hilanasilv/tem-no-bairro.git
+   https://github.com/hilanasilv/ON36-IJS-Tem-no-bairro.git
    cd tem-no-bairro
    ```
 
