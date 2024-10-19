@@ -7,7 +7,7 @@ async function bootstrap() {
   
   const config = new DocumentBuilder()
     .setTitle("Tem no bairro")
-    .setDescription("API de busca de serviços")
+    .setDescription("API colaborativa que facilita a busca e o cadastro de serviços locais, conectando a comunidade aos comércios da região.")
     .setVersion('0.0.1')
     .build();
 
