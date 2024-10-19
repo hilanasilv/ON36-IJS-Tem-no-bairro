@@ -16,7 +16,7 @@ const dataSource = new DataSource({
   database: process.env.DATABASE_NAME,
   entities: [Local, Usuario, Categoria, Bairro],
   migrations: [__dirname + '/../migrations/*{.ts,.js}'],
-  synchronize: false,
+  synchronize: true,
 });
 
 export default dataSource;
